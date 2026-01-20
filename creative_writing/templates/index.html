@@ -3,224 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visual Storyteller</title>
+    <title>Designitive - Premium Lifestyle</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-            max-width: 800px;
+            font-family: 'Source Sans 3', sans-serif;
+            background-color: #f7f3ee;
+            color: #2f2a24;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .page {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-            text-align: center;
+            padding: 28px 48px 60px;
         }
-        h1 {
-            color: #2c3e50;
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: 64px;
         }
-        .container {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 22px;
+            letter-spacing: 0.4px;
         }
-        .upload-section {
-            margin-bottom: 20px;
-            border: 2px dashed #cbd5e0;
-            padding: 40px;
-            border-radius: 8px;
-            transition: border-color 0.3s;
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            font-size: 15px;
+            color: #3d372f;
         }
-        .upload-section:hover {
-            border-color: #4a90e2;
-        }
-        input[type="file"] {
-            display: none;
-        }
-        .custom-file-upload {
-            border: 1px solid #ccc;
-            display: inline-block;
-            padding: 10px 20px;
+
+        .nav-links span {
             cursor: pointer;
-            background-color: #e2e8f0;
-            border-radius: 5px;
-            font-weight: bold;
+            transition: color 0.2s ease;
         }
-        button#generate-btn {
-            background-color: #4a90e2;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: background-color 0.3s;
+
+        .nav-links span:hover {
+            color: #b26b4c;
         }
-        button#generate-btn:hover {
-            background-color: #357abd;
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 18px;
         }
-        button#generate-btn:disabled {
-            background-color: #cbd5e0;
-            cursor: not-allowed;
+
+        .icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 1px solid rgba(47, 42, 36, 0.2);
+            display: grid;
+            place-items: center;
+            font-size: 14px;
+            color: #2f2a24;
         }
-        #result-section {
-            display: none;
-            margin-top: 30px;
-            text-align: left;
-        }
-        .result-image {
-            max-width: 100%;
-            max-height: 400px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .mood-tag {
-            background-color: #edf2f7;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.9em;
-            color: #718096;
-            margin-bottom: 10px;
-            display: inline-block;
-        }
-        .story-text {
-            font-size: 1.1em;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            padding: 20px;
-            background-color: #fff8e1;
-            border-left: 4px solid #f6e05e;
+
+        .about-btn {
+            border: 1.5px solid #b26b4c;
+            color: #b26b4c;
+            padding: 8px 18px;
+            font-size: 14px;
+            text-transform: capitalize;
             border-radius: 4px;
         }
-        .audio-controls {
-            text-align: center;
-            margin-top: 20px;
-        }
-        button#read-aloud-btn {
-            background-color: #48bb78;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
-            display: inline-flex;
+
+        .hero {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 48px;
             align-items: center;
-            gap: 8px;
         }
-        button#read-aloud-btn:hover {
-            background-color: #38a169;
+
+        .hero-content {
+            max-width: 480px;
         }
-        .loader {
-            border: 4px solid #f3f3f3;
+
+        .eyebrow {
+            font-size: 14px;
+            letter-spacing: 0.4px;
+            text-transform: capitalize;
+            color: #5e5449;
+            margin-bottom: 14px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 54px;
+            line-height: 1.1;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+
+        .hero-copy {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #5e5449;
+            margin-bottom: 28px;
+        }
+
+        .cta-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+
+        .cta-primary {
+            background-color: #b45f3b;
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 4px;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+        }
+
+        .cta-secondary {
+            width: 42px;
+            height: 42px;
+            border: 1px solid #c6b8a6;
+            border-radius: 4px;
+            display: grid;
+            place-items: center;
+            color: #b26b4c;
+            font-size: 18px;
+        }
+
+        .socials {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .socials span {
+            width: 26px;
+            height: 26px;
             border-radius: 50%;
-            border-top: 4px solid #3498db;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-            display: none;
+            border: 1px solid rgba(47, 42, 36, 0.25);
+            display: grid;
+            place-items: center;
+            font-size: 12px;
+            color: #2f2a24;
         }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+
+        .hero-image {
+            background-color: #e2d7cb;
+            padding: 18px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border-radius: 4px;
+            object-fit: cover;
+        }
+
+        @media (max-width: 900px) {
+            .nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 42px;
+            }
+
+            .page {
+                padding: 24px 24px 48px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>✨ Visual Storyteller ✨</h1>
-        <p>Upload an image and let AI analyze the mood and ghostwrite a story opening for you.</p>
-
-        <div class="upload-section">
-            <form id="upload-form">
-                <label for="file-upload" class="custom-file-upload">
-                    📁 Choose Image
-                </label>
-                <input id="file-upload" type="file" name="image" accept="image/*" required onchange="updateFileName()">
-                <div id="file-name" style="margin-top: 10px; color: #666;">No file chosen</div>
-                <br>
-                <button type="submit" id="generate-btn">Generate Story</button>
-            </form>
-        </div>
-
-        <div class="loader" id="loader"></div>
-
-        <div id="result-section">
-            <img id="result-img" class="result-image" src="" alt="Uploaded Image">
-            <div style="text-align: center;">
-                <span id="mood-display" class="mood-tag">Mood: Unknown</span>
+    <div class="page">
+        <nav class="nav">
+            <div class="logo">designitive</div>
+            <div class="nav-links">
+                <span>Exerunces</span>
+                <span>Rellous</span>
+                <span>Legunity offers ▾</span>
             </div>
-            <div class="story-text" id="story-display">
-                <!-- Story goes here -->
+            <div class="nav-right">
+                <div class="icon">⌕</div>
+                <div class="icon">✦</div>
+                <div class="icon">⟳</div>
+                <a class="about-btn" href="#">About</a>
             </div>
-            <div class="audio-controls">
-                <button id="read-aloud-btn" onclick="playAudio()">
-                    🔊 Read Aloud
-                </button>
-                <audio id="story-audio" style="display:none;"></audio>
+        </nav>
+
+        <section class="hero">
+            <div class="hero-content">
+                <div class="eyebrow">High quality. dompmereare plogerly</div>
+                <h1>Premium Lifestyle for expeifel</h1>
+                <p class="hero-copy">
+                    Eligq anvmatis siglt luaily rotels craund entimance from
+                    ftey peportmance: for mittens user interactions.
+                </p>
+                <div class="cta-row">
+                    <a class="cta-primary" href="#">Shign now</a>
+                    <a class="cta-secondary" href="#">→</a>
+                </div>
+                <div class="socials">
+                    <span>◎</span>
+                    <span>✈</span>
+                    <span>✚</span>
+                    <span>◌</span>
+                </div>
             </div>
-        </div>
+            <div class="hero-image">
+                <img
+                    src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80"
+                    alt="Model in black dress"
+                >
+            </div>
+        </section>
     </div>
-
-    <script>
-        function updateFileName() {
-            const input = document.getElementById('file-upload');
-            const fileNameDisplay = document.getElementById('file-name');
-            if (input.files && input.files.length > 0) {
-                fileNameDisplay.textContent = input.files[0].name;
-            } else {
-                fileNameDisplay.textContent = "No file chosen";
-            }
-        }
-
-        document.getElementById('upload-form').addEventListener('submit', async function(e) {
-            e.preventDefault();
-
-            const formData = new FormData(this);
-            const loader = document.getElementById('loader');
-            const resultSection = document.getElementById('result-section');
-            const generateBtn = document.getElementById('generate-btn');
-
-            loader.style.display = 'block';
-            resultSection.style.display = 'none';
-            generateBtn.disabled = true;
-
-            try {
-                const response = await fetch('/generate', {
-                    method: 'POST',
-                    body: formData
-                });
-
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-
-                const data = await response.json();
-
-                // Update UI
-                document.getElementById('result-img').src = data.image_url;
-                document.getElementById('mood-display').textContent = 'Mood: ' + data.mood;
-                document.getElementById('story-display').textContent = data.story;
-                document.getElementById('story-audio').src = data.audio_url;
-
-                resultSection.style.display = 'block';
-            } catch (error) {
-                console.error('Error:', error);
-                alert('An error occurred while processing the image.');
-            } finally {
-                loader.style.display = 'none';
-                generateBtn.disabled = false;
-            }
-        });
-
-        function playAudio() {
-            const audio = document.getElementById('story-audio');
-            audio.play();
-        }
-    </script>
 </body>
 </html>
